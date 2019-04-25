@@ -1,4 +1,4 @@
-const messageDisplay = document.querySelector('#messageDisplay');
+const messageDisplay = document.querySelector('#messages');
 const messageSender = document.querySelector('#messageSender');
 
 function drawChatroom(messageDoc){
@@ -7,7 +7,10 @@ function drawChatroom(messageDoc){
     li.setAttribute('messageID', messageDoc.id);
 
     let message = document.createElement('span');
-    message.textContent = messageDoc.data().messageContents;
+    message.textContent = 
+    messageDoc.data().messageSender 
+    + " says: " +
+    messageDoc.data().messageContents;
 
     li.appendChild(message);
     messageDisplay.appendChild(li);
@@ -15,12 +18,16 @@ function drawChatroom(messageDoc){
 
 messageSender.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(messageSender.messageToSend.value != ''){
+    if(messageSender.nameToSend.value != ''){
         db.collection('chatroom').add({
-            messageContents:messageSender.messageToSend.value
-        });
+            messageContents:messageSender.messageToSend.value,
+            messageSender:messageSender.nameToSend.value
+        });        
+        messageSender.messageToSend.value = '';
     }
-    messageSender.messageToSend.value = '';
+    else{
+        messageSender:messageSender.nameToSend.value = "Forgetting name";
+    }
 })
 
 

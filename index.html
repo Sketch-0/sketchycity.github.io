@@ -14,10 +14,23 @@
         <h1>Eola Chatroom Testing</h1>
 
         <div class="content">
-            <ul id="messageDisplay"></ul>
+            <div class="messageDisplay">
+                <ul id="messages"></ul>
+            </div>
 
             <form id="messageSender">
-                    <input type="text" name="messageToSend"/>
+                    <input 
+                    style="background-color:rgb(174, 120, 224)"
+                    type="text" 
+                    name="messageToSend"
+                    placeholder="Enter message here"
+                    />
+                    <input 
+                    style="background-color:rgb(165, 85, 161)"
+                    type="text" 
+                    name="nameToSend"
+                    placeholder="Enter your name here"
+                    />
                     <input type="submit" name="messageSubmit" value="Send"/>
             </form>
         </div>
